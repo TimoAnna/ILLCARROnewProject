@@ -34,6 +34,16 @@ public class UserHelper extends HelperBase {
         return isElementPresent(By.xpath("//a[text()=' Logout ']"));
     }
 
+    public boolean isOKbuttonRegistration(){
+        return isElementPresent(By.xpath("//*[@class = 'positive-button ng-star-inserted']"));
+
+    }
+    public void clickOKbuttonAfterReg(){
+        click(By.xpath("//*[@class = 'positive-button ng-star-inserted']"));
+
+    }
+
+
     public void openRegForm() {
         click(By.xpath("//a[text()=' Sign up ']"));
     }
@@ -51,7 +61,11 @@ public class UserHelper extends HelperBase {
       //  click(By.id("terms-of-use"));
 
     //    click(By.xpath("//label[@for='terms-of-use']"));
-      JavascriptExecutor js = (JavascriptExecutor) wd;
-       js.executeScript("");
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        js.executeScript("document.querySelector('#terms-of-use').click();");
+        js.executeScript("document.querySelector('#terms-of-use').checked=true;");
+
     }
+
+
 }

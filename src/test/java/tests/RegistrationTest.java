@@ -8,8 +8,13 @@ public class RegistrationTest extends TestBase {
 
     @BeforeMethod
     public void precondition() {
+        if(app.userHelper().isLogOutPresent()){
+            app.userHelper().logout();
+
+        }
 
     }
+
 
     @Test
     public void regTest() {
@@ -24,14 +29,23 @@ public class RegistrationTest extends TestBase {
 
     }
 
+
     @Test
     public void regTestNegative() {
+        app.userHelper().openRegForm();
+        app.userHelper().fillRegForm("Lisa", "Stonee", "stone@gmail", "Stone1234$");
+        app.userHelper().checkPolicy();
+        app.userHelper().submitForm();
 
     }
 
 
+
     @AfterMethod
     public void postCondition() {
+    if(app.userHelper().isOKbuttonRegistration()){
+    app.userHelper().clickOKbuttonAfterReg();
+    }
 
     }
 }
