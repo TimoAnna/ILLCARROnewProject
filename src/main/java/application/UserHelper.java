@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class UserHelper extends HelperBase {
+
+
     public UserHelper(WebDriver wd) {
         super(wd);
     }
@@ -20,6 +22,13 @@ public class UserHelper extends HelperBase {
         type(By.id("password"), password);
     }
 
+    public void fillLoginForm(User user) {
+    type(By.id("email"), user.getEmail());
+    type(By.id("password"), user.getPassword());
+    }
+
+
+
     public void submitForm() {
         click(By.xpath("//button[@type='submit']"));
     }
@@ -27,7 +36,7 @@ public class UserHelper extends HelperBase {
 
     public boolean isLogged() {
         String text = wd.findElement(By.cssSelector(".dialog-container h2")).getText();
-        click(By.xpath("//button[text()='Ok']"));
+        click(By.xpath("//*[@class='positive-button ng-star-inserted']"));
         return text.equals("Logged in success");
     }
 
@@ -83,7 +92,7 @@ public class UserHelper extends HelperBase {
     }
 
     public boolean isErrorPasswordDisplayed() throws InterruptedException {
-        // click(By.id("email"));
+         click(By.id("email"));
         Thread.sleep(2000);
         return isElementPresent(By.xpath("//div[@class='error']"));
 
@@ -93,4 +102,10 @@ public class UserHelper extends HelperBase {
         //return wd.findElement(By.xpath("//button[@type='submit']")).isSelected();
         return isElementPresent(By.xpath("//button[@disabled]"));
     }
+
+    public boolean isWrongAuthApper(){
+        return isElementPresent(By.xpath("//h1[normalize-space()='Authorization error']") );
+
+    }
+
 }
