@@ -15,8 +15,7 @@ public class HelperCar extends HelperBase {
 
 
     public void initAddingNewCar() {
-
-        click(By.xpath("//[a[@href ='/Let-car-work']"));
+    wd.findElement(By.xpath("//a[@href ='/Let-car-work']")).click();
     }
 
 
