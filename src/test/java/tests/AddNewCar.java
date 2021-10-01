@@ -25,7 +25,7 @@ public class AddNewCar extends TestBase {
 
 @Test
     public void addNewCar(){
-    app.car().initAddingNewCar();
+
 
     int i = (int)((System.currentTimeMillis()/1000)%3600);
 
@@ -48,7 +48,7 @@ public class AddNewCar extends TestBase {
             .withTypeFeatures("type of")
             .withAbout("Very good car");
 
-
+    app.car().initAddingNewCar();
         app.car().fillCarForm(car);
        app.car().attachPhoto();
         app.car().clickButtonSubmit();
