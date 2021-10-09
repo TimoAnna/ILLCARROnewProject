@@ -2,11 +2,15 @@ package application;
 
 import models.Car;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class HelperCar extends HelperBase {
     public HelperCar(WebDriver wd) {
@@ -80,5 +84,29 @@ public class HelperCar extends HelperBase {
     }
 
 
+    public void chooseCity() {
+        wd.findElement(By.xpath("//label[@for='city']")).click();
+        WebElement city = wd.findElement(By.id("city"));
+        city.sendKeys("Rehovot, Israel");
+        city.sendKeys(Keys.ENTER);
+
+    }
+
+    public void chooseData() {
+       int a = 0;
+       int b = 28;
+        int day = a + (int)(Math.random()*b);
+
+        String loc = String.format("//div[text()= '%s']", day);
+
+        wd.findElement(By.xpath("//label[@for='dates']")).click();
+        List<WebElement> list = wd.findElements(By.xpath(loc));
+        pause(1000);
+
+
+
+               //(//button[@aria-label='Choose month and year'])[1]
+
+    }
 }
 
