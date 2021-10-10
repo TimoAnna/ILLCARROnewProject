@@ -11,9 +11,11 @@ public class SearchCar extends TestBase {
     }
     @Test
     public void searchCar(){
-        app.car().chooseCity();
+       app.car().chooseCity();
         app.car().chooseData();
+        app.userHelper().submitForm();
     }
+
 
 
 }

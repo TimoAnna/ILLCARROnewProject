@@ -87,25 +87,48 @@ public class HelperCar extends HelperBase {
     public void chooseCity() {
         wd.findElement(By.xpath("//label[@for='city']")).click();
         WebElement city = wd.findElement(By.id("city"));
-        city.sendKeys("Rehovot, Israel");
+        city.sendKeys("Rehovot");
+        pause(2000);
+        wd.findElement(By.xpath("//span[contains(text(),'Israel')]")).click();
         city.sendKeys(Keys.ENTER);
+
 
     }
 
     public void chooseData() {
-       int a = 0;
-       int b = 28;
-        int day = a + (int)(Math.random()*b);
-
-        String loc = String.format("//div[text()= '%s']", day);
+       int min = 11;
+       int max = 28;
+        int day = (int)(Math.random()*((max-min)+1))+min;
+        String date = String.valueOf(day);
 
         wd.findElement(By.xpath("//label[@for='dates']")).click();
-        List<WebElement> list = wd.findElements(By.xpath(loc));
+        wd.findElement(By.xpath("//div[normalize-space()='19']")).click();
+        wd.findElement(By.xpath("//div[normalize-space()='24']")).click();
         pause(1000);
 
 
+//        new Select(wd.findElement(By.xpath("//div[@class= 'mat-calendar-body-cell-content']"))).selectByValue(date);
+//        pause(1000);
+//        new Select(wd.findElement(By.xpath("//div[@class= 'mat-calendar-body-cell-content']"))).selectByValue(date);
 
-               //(//button[@aria-label='Choose month and year'])[1]
+
+   // String loc = String.format("//div[text()= '%s']", date1);
+      //  List<WebElement> list = wd.findElements(By.xpath(loc));
+//     WebElement el = wd.findElement(By.xpath("//div[@class= 'mat-calendar-body-cell-content']"));
+//     el.sendKeys(date1);
+//    el.sendKeys(date2);
+
+//
+//        wd.findElement(By.xpath("//div[normalize-space()=]"+ date)).click();
+
+       // String loc = String.format("//div[text()= '%s']", day);
+
+//        WebElement el = wd.findElement(By.xpath("//div[text()= '%s']"));
+//        el.sendKeys(date);
+//        pause(1000);
+//        el.sendKeys(date);
+//        el.sendKeys(Keys.ENTER);
+
 
     }
 }
